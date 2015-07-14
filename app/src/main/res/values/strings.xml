@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">ImageIntentHandler</string>
+
+    <string name="action_github">GitHub</string>
+</resources>
