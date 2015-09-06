@@ -47,6 +47,7 @@ public void onActivityResult(int requestCode, int resultCode, Intent data) {
 }
 ```
 
+==================
 developed to make programming easy. 
 
-by Himanshu Soni (himanshu_soni@mail.com)
+by Himanshu Soni (himanshusoni.me@gmail.com)
