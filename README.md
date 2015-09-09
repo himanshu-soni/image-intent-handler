@@ -1,6 +1,7 @@
 # image-intent-handler
 Easiest way to handle image via camera and gallery intent.
 
+[![Android Arsenal](https://img.shields.io/badge/Android%20Arsenal-image--intent--handler-green.svg?style=flat)](https://android-arsenal.com/details/1/2154)
 
 ####Features:
 
