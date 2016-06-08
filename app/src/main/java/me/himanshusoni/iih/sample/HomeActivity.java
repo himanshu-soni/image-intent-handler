@@ -1,4 +1,4 @@
-package com.hs.image.sample;
+package me.himanshusoni.iih.sample;
 
 import android.content.Intent;
 import android.net.Uri;
@@ -12,10 +12,10 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.Toast;
 
-import com.hs.image.ImageIntentHandler;
-import com.hs.image.ImageUtils;
-
 import java.io.File;
+
+import me.himanshusoni.iih.ImageIntentHandler;
+import me.himanshusoni.iih.ImageUtils;
 
 
 public class HomeActivity extends AppCompatActivity {

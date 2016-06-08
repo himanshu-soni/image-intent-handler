@@ -1,4 +1,4 @@
-package com.hs.image;
+package me.himanshusoni.iih;
 
 import android.content.Context;
 import android.database.Cursor;

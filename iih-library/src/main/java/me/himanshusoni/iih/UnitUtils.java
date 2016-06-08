@@ -1,4 +1,4 @@
-package com.hs.image;
+package me.himanshusoni.iih;
 
 import android.content.res.Resources;
 

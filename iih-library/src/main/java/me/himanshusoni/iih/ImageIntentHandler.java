@@ -1,10 +1,12 @@
-package com.hs.image;
+package me.himanshusoni.iih;
 
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.widget.ImageView;
+
+import java.io.Serializable;
 
 /**
  * Created by Himanshu on 3/17/2015.
@@ -87,8 +89,7 @@ public class ImageIntentHandler {
         }.execute();
     }
 
-
-    public static class ImagePair {
+    public static class ImagePair implements Serializable {
         public ImageView imageView;
         public String imagePath;
 

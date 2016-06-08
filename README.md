@@ -9,6 +9,11 @@ Easiest way to handle image via camera and gallery intent.
 - take care of `OutOfMemoryException`
 - take care of image rotation while camera capture
 
+####Installation:
+``` groovy
+compile 'me.himanshusoni.iih:iih-library:0.9.1'
+```
+
 ####Sample Use:
 
 1) Create an `ImagePair`
