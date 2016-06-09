@@ -14,6 +14,9 @@ import java.io.File;
 import java.io.FileOutputStream;
 
 public class ImageUtils {
+    private ImageUtils() {
+    }
+
     public static String getPackageName(Context c) {
         return c.getPackageName();
     }
