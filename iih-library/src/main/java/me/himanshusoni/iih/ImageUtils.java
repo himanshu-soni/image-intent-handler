@@ -41,7 +41,7 @@ public class ImageUtils {
         return cursor.getString(column_index);
     }
 
-    public final static Bitmap getBitmapFromFile(String filePath, int width, int height) {
+    public static final Bitmap getBitmapFromFile(String filePath, int width, int height) {
         BitmapFactory.Options options = new BitmapFactory.Options();
         options.inJustDecodeBounds = true;
         BitmapFactory.decodeFile(filePath, options);
@@ -55,7 +55,7 @@ public class ImageUtils {
     }
 
 
-    public final static int calculateInSampleSize(BitmapFactory.Options options, int reqWidth, int reqHeight) {
+    public static final int calculateInSampleSize(BitmapFactory.Options options, int reqWidth, int reqHeight) {
         if (reqWidth == 0 && reqHeight == 0)
             return 1;
 
