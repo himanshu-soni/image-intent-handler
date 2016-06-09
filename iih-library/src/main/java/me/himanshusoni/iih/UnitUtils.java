@@ -3,6 +3,9 @@ package me.himanshusoni.iih;
 import android.content.res.Resources;
 
 public class UnitUtils {
+	private UnitUtils() {
+	}
+
 	public static int dpToPx(int dp) {
 		return (int) (dp * Resources.getSystem().getDisplayMetrics().density);
 	}
