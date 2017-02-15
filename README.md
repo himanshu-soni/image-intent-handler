@@ -1,3 +1,7 @@
+# Deprecated and not maintained now.
+This library is deprecated now. I am working on a new library which will be have more features and new api support.   
+
+
 # image-intent-handler
 Easiest way to handle image via camera and gallery intent.
 
@@ -5,13 +9,13 @@ Easiest way to handle image via camera and gallery intent.
 
 ####Features:
 
-- Resizes Image in specific size and folder
-- take care of `OutOfMemoryException`
-- take care of image rotation while camera capture
+- Resize Image in specific size and folder
+- Take care of `OutOfMemoryException`
+- Take care of image rotation while camera capture
 
 ####Installation:
 ``` groovy
-compile 'me.himanshusoni.iih:iih-library:0.9.1'
+compile 'me.himanshusoni.iih:iih-library:0.9.2'
 ```
 
 ####Sample Use:

@@ -36,26 +36,31 @@ public class ImageUtils {
     public static String getRealPathFromURI(Context context, Uri contentUri) {
         String[] proj = {MediaStore.Images.Media.DATA};
         Cursor cursor = context.getContentResolver().query(contentUri, proj, null, null, null);
-        int column_index = cursor.getColumnIndexOrThrow(MediaStore.Images.Media.DATA);
-        cursor.moveToFirst();
-        return cursor.getString(column_index);
+        if (cursor != null) {
+            int column_index = cursor.getColumnIndexOrThrow(MediaStore.Images.Media.DATA);
+            cursor.moveToFirst();
+            String realPath = cursor.getString(column_index);
+            cursor.close();
+            return realPath;
+        } else {
+            return null;
+        }
     }
 
-    public final static Bitmap getBitmapFromFile(String filePath, int width, int height) {
+    public static Bitmap getBitmapFromFile(String filePath, int width, int height) {
         BitmapFactory.Options options = new BitmapFactory.Options();
         options.inJustDecodeBounds = true;
+
         BitmapFactory.decodeFile(filePath, options);
 
         options.inSampleSize = calculateInSampleSize(options, width, height);
-
         options.inJustDecodeBounds = false;
-        Bitmap bitmap = BitmapFactory.decodeFile(filePath, options);
 
-        return bitmap;
+        return BitmapFactory.decodeFile(filePath, options);
     }
 
 
-    public final static int calculateInSampleSize(BitmapFactory.Options options, int reqWidth, int reqHeight) {
+    public static int calculateInSampleSize(BitmapFactory.Options options, int reqWidth, int reqHeight) {
         if (reqWidth == 0 && reqHeight == 0)
             return 1;
 
@@ -71,8 +76,8 @@ public class ImageUtils {
         return inSampleSize;
     }
 
-    public static final String getSmallImageFromSDCard(String folderInExternalStorage, String originalImage, int width, int height) {
-        Bitmap b = BitmapFactory.decodeFile(originalImage);
+    public static String getSmallImageFromSDCard(String folderInExternalStorage, String originalImage, int width, int height) {
+        Bitmap b = getBitmapFromFile(originalImage, width, height);
         Bitmap out = Bitmap.createScaledBitmap(b, width, height, false);
 
         File file = createImageFile(folderInExternalStorage);
@@ -96,7 +101,7 @@ public class ImageUtils {
         try {
             ExifInterface ei = new ExifInterface(photoPath);
             int orientation = ei.getAttributeInt(ExifInterface.TAG_ORIENTATION, ExifInterface.ORIENTATION_NORMAL);
-            int degree = 0;
+            int degree;
             switch (orientation) {
                 case ExifInterface.ORIENTATION_NORMAL:
                     degree = 0;
