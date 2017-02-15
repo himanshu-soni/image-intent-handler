@@ -12,8 +12,12 @@ import android.provider.MediaStore;
 
 import java.io.File;
 import java.io.FileOutputStream;
+import java.io.IOException;
 
 public class ImageUtils {
+    private ImageUtils() {
+    }
+
     public static String getPackageName(Context c) {
         return c.getPackageName();
     }
@@ -50,13 +54,14 @@ public class ImageUtils {
     public static Bitmap getBitmapFromFile(String filePath, int width, int height) {
         BitmapFactory.Options options = new BitmapFactory.Options();
         options.inJustDecodeBounds = true;
-
         BitmapFactory.decodeFile(filePath, options);
 
         options.inSampleSize = calculateInSampleSize(options, width, height);
-        options.inJustDecodeBounds = false;
 
-        return BitmapFactory.decodeFile(filePath, options);
+        options.inJustDecodeBounds = false;
+        Bitmap bitmap = BitmapFactory.decodeFile(filePath, options);
+
+        return bitmap;
     }
 
 
@@ -133,6 +138,8 @@ public class ImageUtils {
         if (degree <= 0) {
             return imagePath;
         }
+        FileOutputStream fOut = null;
+        FileOutputStream out = null;
         try {
             Bitmap b = BitmapFactory.decodeFile(imagePath);
 
@@ -143,22 +150,35 @@ public class ImageUtils {
                         matrix, true);
             }
 
-            FileOutputStream fOut = new FileOutputStream(imagePath);
+            fOut = new FileOutputStream(imagePath);
             String imageName = imagePath.substring(imagePath.lastIndexOf("/") + 1);
             String imageType = imageName.substring(imageName.lastIndexOf(".") + 1);
 
-            FileOutputStream out = new FileOutputStream(imagePath);
+            out = new FileOutputStream(imagePath);
             if (imageType.equalsIgnoreCase("png")) {
                 b.compress(Bitmap.CompressFormat.PNG, 80, out);
             } else if (imageType.equalsIgnoreCase("jpeg") || imageType.equalsIgnoreCase("jpg")) {
                 b.compress(Bitmap.CompressFormat.JPEG, 80, out);
             }
             fOut.flush();
-            fOut.close();
 
             b.recycle();
         } catch (Exception e) {
             e.printStackTrace();
+        } finally {
+            try {
+                if (fOut != null)
+                    fOut.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+            try {
+                if (out != null)
+                    out.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         }
         return imagePath;
     }
