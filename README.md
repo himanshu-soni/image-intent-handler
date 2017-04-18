@@ -7,18 +7,18 @@ Easiest way to handle image via camera and gallery intent.
 
 [![Android Arsenal](https://img.shields.io/badge/Android%20Arsenal-image--intent--handler-green.svg?style=flat)](https://android-arsenal.com/details/1/2154)
 
-####Features:
+#### Features:
 
 - Resize Image in specific size and folder
 - Take care of `OutOfMemoryException`
 - Take care of image rotation while camera capture
 
-####Installation:
+#### Installation:
 ``` groovy
 compile 'me.himanshusoni.iih:iih-library:0.9.2'
 ```
 
-####Sample Use:
+#### Sample Use:
 
 1) Create an `ImagePair`
 ``` java
